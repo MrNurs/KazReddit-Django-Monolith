@@ -1,0 +1,87 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #fafafa;
+    color: #333;
+    margin: 0;
+    padding: 20px;
+}
+
+h2 {
+    border-bottom: 2px solid #ccc;
+    padding-bottom: 6px;
+    margin-bottom: 20px;
+}
+
+.logo {
+    font-size: 100px;
+    font-weight: bold;
+}
+
+.logo .kaz {
+    color: #3498db;
+}
+
+.logo .reddit {
+    color: #e74c3c;
+}
+
+a {
+    color: #3498db;
+    text-decoration: none;
+    font-weight: bold;
+}
+.logo-red{
+    color:red!important;
+}
+
+.comment {
+    padding: 10px;
+    background-color: #f7f7f7;
+    margin-bottom: 10px;
+    border-radius: 6px;
+    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+}
+.comment .author {
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.comment .meta {
+    font-size: 0.9em;
+    color: #888;
+}
+
+.comment p {
+    margin: 5px 0;
+}
+
+.comment-thread {
+
+    margin-left: 25px;
+    padding-left: 15px;
+    border-left: 2px solid #ccc;
+    margin-top: 10px;
+}
+
+.comment-thread .comment-thread {
+    border-left: 2px dashed #ccc;
+    margin-left: 15px;
+}
+
+.post-text {
+    margin-top: 20px;
+
+    padding: 15px;
+
+    border-radius: 6px;
+    margin-bottom: 30px;
+
+}
+
+.meta .likes,
+.meta .dislikes {
+    margin-right: 10px;
+    font-size: 0.9em;
+    color: #555;
+}

@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Subreddits</title>
+    <link rel="stylesheet" href="{% static 'core/style.css' %}">
+</head>
+<header>
+    <div>
+        <h1>
+            <a href="/kazreddit" id="logo"> <span class="logo-blue">Kaz</span><span class="logo-red">Reddit</span></a>
+        </h1>
+    </div>
+</header>
+<body>
+<div class="container">
+    <h1 class="header">SubReddits</h1>
+
+    {% if subreddits %}
+        <ul class="subreddit-list">
+            {% for subr in subreddits %}
+                <li class="subreddit-item">
+                    <a href="{% url 'core:posts' subr.name %}" class="subreddit-link">{{ subr.name }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p class="no-items">No subreddits are available.</p>
+    {% endif %}
+</div>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{% static 'core/style.css' %}">
+
+</head>
+
+<header>
+    <div>
+        <h1>
+            <a href="/kazreddit" id="logo"> <span class="logo-blue">Kaz</span><span class="logo-red">Reddit</span></a>
+        </h1>
+    </div>
+</header>
+<body>
+    <div class="container">
+        <h1>{{ post.title }}</h1>
+        <div class="post-text">{{ post.text }}</div>
+
+        <h2>Comments</h2>
+        {% if comments %}
+            {% for comment in comments %}
+                {% if not comment.parent %}
+                    <div class="comment">
+                        <p class="author">{{ comment.author }}</p>
+                        <p>{{ comment.text }}</p>
+                         <div class="meta">
+                👍           {{ comment.like }} | 👎 {{ comment.dislike }}
+                                <div>
+                                    reply
+                                </div>
+                        </div>
+                        {% include "core/comment_replies.html" with replies=comment.replies.all depth=0 %}
+                    </div>
+                {% endif %}
+            {% endfor %}
+        {% else %}
+            <p class="no-comments">No comments yet</p>
+        {% endif %}
+    </div>
+</body>
+</html>
