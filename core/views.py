@@ -1,12 +1,15 @@
-from django.http import Http404
+from django.http import Http404, HttpResponse
 from django.shortcuts import render,get_object_or_404
 from django.views import generic
-
+from django.contrib.auth.forms import UserCreationForm
 
 from .models import Subreddit, Post, Comment
+from django.urls import reverse_lazy
 
-
-# Create your views here.
+class RegisterView(generic.CreateView):
+    form_class = UserCreationForm
+    template_name = 'core/register.html'
+    success_url = reverse_lazy('core:login')
 
 class SubredditView(generic.ListView):
     context_object_name = 'subreddits'
