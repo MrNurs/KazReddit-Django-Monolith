@@ -22,7 +22,7 @@ class Post(models.Model):
     author = models.CharField(max_length=100)
 
 class Comment(models.Model):
-    post_id = models.ForeignKey(Post, on_delete=models.CASCADE)
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)
     parent = models.ForeignKey('self', null=True, blank=True, on_delete=models.CASCADE, related_name='replies')
     text = models.CharField(max_length=1000)
     author = models.CharField(max_length=100, default="<UNK>")

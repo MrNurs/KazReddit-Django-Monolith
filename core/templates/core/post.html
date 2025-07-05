@@ -11,6 +11,7 @@
         <h1>
             <a href="/kazreddit" id="logo"> <span class="logo-blue">Kaz</span><span class="logo-red">Reddit</span></a>
             {{user.username}}
+            {{user}}
         </h1>
     </div>
 </header>
@@ -29,6 +30,21 @@
     {% else %}
         <p class="no-items">No posts are available.</p>
     {% endif %}
+    <form method="post">
+        {% csrf_token %}
+        <div>
+            <label for="title">Write title for your post</label>
+            <input type="text" name="title" id="title" required>
+        </div>
+
+        <div>
+            <label for="desc">Description</label>
+            <textarea name="desc" id="desc" required></textarea>
+        </div>
+
+        <button type="submit">Create new subreddit</button>
+    </form>
+
 </div>
 </body>
 </html>

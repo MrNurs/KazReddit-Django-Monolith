@@ -9,7 +9,12 @@
             <div class="meta">
                 👍 {{ comment.like }} | 👎 {{ comment.dislike }}
                 <div>
-                  reply
+                    <form method="post" style="margin-top: 10px;">
+                        {% csrf_token %}
+                        <input type="hidden" name="parent" value="{{ comment.id }}">
+                        <textarea name="comment" placeholder="Reply to this comment..." required></textarea>
+                        <button type="submit">Reply</button>
+                    </form>
                 </div>
             </div>
         </div>

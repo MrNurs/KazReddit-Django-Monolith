@@ -1,5 +1,5 @@
 from django.http import Http404, HttpResponse
-from django.shortcuts import render,get_object_or_404
+from django.shortcuts import render,get_object_or_404,redirect
 from django.views import generic
 from django.contrib.auth.forms import UserCreationForm
 
@@ -16,6 +16,15 @@ class SubredditView(generic.ListView):
     template_name = 'core/subreddits.html'
     def get_queryset(self):
         return Subreddit.objects.all()
+
+    def post(self, request):
+        title = request.POST.get('title')
+        desc = request.POST.get('desc')
+
+        if title and desc:
+            Subreddit.objects.create(name=title, detail=desc)
+            return redirect('core:index')
+
 
 class PostView(generic.ListView):
     context_object_name = 'posts'
@@ -37,7 +46,26 @@ class PostView(generic.ListView):
 
         return Post.objects.filter(subreddit=subreddit.id)
 
+    def post(self, request, *args, **kwargs):
+        subreddit_name = self.kwargs.get('subreddit_name')
+        try:
+            subreddit = Subreddit.objects.get(name=subreddit_name)
+        except Subreddit.DoesNotExist:
+            raise Http404("Subreddit does not exist")
 
+        title = request.POST.get('title')
+        desc = request.POST.get('desc')
+
+        if title and desc:
+            Post.objects.create(
+                subreddit=subreddit,
+                title=title,
+                text=desc,
+                author=request.user.username
+            )
+            return redirect('core:posts', subreddit_name=subreddit_name)
+
+        return self.get(request, *args, **kwargs)
 
 class PostDetailView(generic.DetailView):
     model = Post
@@ -50,7 +78,6 @@ class PostDetailView(generic.DetailView):
         comment_id = self.kwargs['post_id']
         context['comments'] = Comment.objects.filter(post_id=comment_id, parent=None)
         return context
-
 
     def get_object(self, queryset=None):
         subreddit_name = self.kwargs.get('subreddit_name')
@@ -66,3 +93,31 @@ class PostDetailView(generic.DetailView):
         except Post.DoesNotExist:
             raise Http404("Post does not exist")
         return post
+
+    def post(self, request, *args, **kwargs):
+        text = request.POST.get('comment')
+        parent_id = request.POST.get('parent')
+        subreddit_name = kwargs.get('subreddit_name')
+        post_id = kwargs.get('post_id')
+
+        try:
+            post = Post.objects.get(id=post_id)
+        except Post.DoesNotExist:
+            raise Http404("Post does not exist")
+
+        if text:
+            comment = Comment(
+                post=post,
+                text=text,
+                author=request.user.username
+            )
+
+            if parent_id:
+                try:
+                    parent_comment = Comment.objects.get(id=parent_id)
+                    comment.parent = parent_comment
+                except Comment.DoesNotExist:
+                    raise Http404("Comment does not exist")
+            comment.save()
+
+        return redirect('core:post', subreddit_name=subreddit_name, post_id=post_id)

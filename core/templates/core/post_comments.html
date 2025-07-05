@@ -22,6 +22,14 @@
         <div class="post-text">{{ post.text }}</div>
 
         <h2>Comments</h2>
+        <form method="post">
+            {% csrf_token %}
+            <div>
+                <label for="comment">Write commentary</label>
+                <textarea name="comment" id="comment" required></textarea>
+            </div>
+            <button type="submit">Create new subreddit</button>
+        </form>
         {% if comments %}
             {% for comment in comments %}
                 {% if not comment.parent %}
@@ -30,9 +38,12 @@
                         <p>{{ comment.text }}</p>
                          <div class="meta">
                 👍           {{ comment.like }} | 👎 {{ comment.dislike }}
-                                <div>
-                                    reply
-                                </div>
+                              <form method="post" style="margin-top: 10px;">
+                                  {% csrf_token %}
+                                  <input type="hidden" name="parent" value="{{ comment.id }}">
+                                  <textarea name="comment" placeholder="Reply to this comment..." required></textarea>
+                                  <button type="submit">Reply</button>
+                              </form>
                         </div>
                         {% include "core/comment_replies.html" with replies=comment.replies.all depth=0 %}
                     </div>
@@ -42,5 +53,6 @@
             <p class="no-comments">No comments yet</p>
         {% endif %}
     </div>
+
 </body>
 </html>

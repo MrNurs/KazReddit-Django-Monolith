@@ -4,7 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e80e46f8-e01d-4db0-a846-b3974773bb64" name="Changes" comment="" />
+    <list default="true" id="e80e46f8-e01d-4db0-a846-b3974773bb64" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/static/core/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/core/static/core/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/templates/core/post.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/core/post.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/templates/core/post_comments.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/core/post_comments.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/templates/core/subreddits.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/core/subreddits.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/views.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -54,5 +62,16 @@
       <updated>1751482013461</updated>
     </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
