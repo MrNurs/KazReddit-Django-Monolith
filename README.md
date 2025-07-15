@@ -53,26 +53,6 @@ HTML5 + CSS3 + minimal JS (for inline reply toggling)
 
 Bootstrap-free, custom styling
 
-# 📂 Project Structure (Simplified)
-bash
-Копировать
-Редактировать
-KazReddit/
-│
-├── core/                    # Main Django app
-│   ├── models.py            # Post, Comment, Subreddit
-│   ├── views.py             # All views (class-based)
-│   ├── templates/core/      # HTML templates
-│   └── static/core/         # CSS and JS
-│
-├── kazreddit/              # Project configuration
-│   ├── urls.py
-│   └── settings.py
-│
-├── db.sqlite3              # Default DB (add to .gitignore)
-├── manage.py
-└── README.md
-
 # Clone the repo
 git clone https://github.com/<your-username>/KazReddit-Django-Monolith-.git
 cd KazReddit-Django-Monolith-
