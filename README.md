@@ -76,7 +76,7 @@ Forum prototype with minimal stack
 
 Sandbox for exploring threaded comments & nested models
 
-🔒 Security Notes
+# 🔒 Security Notes
 Commenting and posting are restricted to logged-in users
 
 CSRF protection enabled on all forms
