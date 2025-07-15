@@ -1,7 +1,7 @@
-#🧠 KazReddit — Reddit-style Forum Built with Django
+# 🧠 KazReddit — Reddit-style Forum Built with Django
 KazReddit is a monolithic Reddit-style forum application built with Django. It allows users to register, log in, create subreddits, make posts, and leave threaded comments in a structured and minimalist environment. Designed as a full-stack educational project, it’s built with maintainability and extensibility in mind.
 
-#🚀 Features
+# 🚀 Features
 ✅ User Authentication
 
 Built-in Django User model
@@ -10,13 +10,13 @@ Login & registration with session-based auth
 
 Protected comment posting and subreddit/post creation
 
-#🧵 Reddit-style Subreddit System
+# 🧵 Reddit-style Subreddit System
 
 Create and browse named subreddits
 
 Posts are scoped by subreddit context
 
-#📝 Post Management
+# 📝 Post Management
 
 Post title and body creation via web forms
 
@@ -24,7 +24,7 @@ Per-subreddit post listing
 
 Author tracking per post
 
-#💬 Threaded Comments
+# 💬 Threaded Comments
 
 Fully nested comment system using self-referencing Comment model
 
@@ -34,7 +34,7 @@ Reply forms per comment (with/without JS)
 
 Only authenticated users can post or reply
 
-#🧹 Clean Django Architecture
+# 🧹 Clean Django Architecture
 
 Class-based views (ListView, DetailView, CreateView)
 
@@ -53,7 +53,7 @@ HTML5 + CSS3 + minimal JS (for inline reply toggling)
 
 Bootstrap-free, custom styling
 
-#📂 Project Structure (Simplified)
+# 📂 Project Structure (Simplified)
 bash
 Копировать
 Редактировать
@@ -72,7 +72,7 @@ KazReddit/
 ├── db.sqlite3              # Default DB (add to .gitignore)
 ├── manage.py
 └── README.md
-#🧪 Installation & Usage
+# 🧪 Installation & Usage
 bash
 Копировать
 Редактировать
