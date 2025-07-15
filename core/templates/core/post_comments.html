@@ -1,28 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     {% load static %}
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" href="{% static 'core/style.css' %}">
+    <link rel="stylesheet" href="{% static 'core/style.css' %}?v=2">
 
 </head>
 
 <header>
     <div>
         <h1>
+            {%  if not user.is_authenticated %}
+            <a id="logReTag" href="/kazreddit/login">Login | Registration</a>
+            {% endif %}
+
             <a href="/kazreddit" id="logo"> <span class="logo-blue">Kaz</span><span class="logo-red">Reddit</span></a>
             {{user.username}}
+
         </h1>
     </div>
 </header>
+
 <body>
     <div class="container">
         <h1>{{ post.title }}</h1>
         <div class="post-text">{{ post.text }}</div>
-
+        <p>Author: {{post.author}}</p>
         <h2>Comments</h2>
-        <form method="post">
+
+        <form method="post" class="formPost">
             {% csrf_token %}
             <div>
                 <label for="comment">Write commentary</label>
@@ -31,28 +39,55 @@
             <button type="submit">Create new subreddit</button>
         </form>
         {% if comments %}
-            {% for comment in comments %}
-                {% if not comment.parent %}
-                    <div class="comment">
-                        <p class="author">{{ comment.author }}</p>
-                        <p>{{ comment.text }}</p>
-                         <div class="meta">
-                👍           {{ comment.like }} | 👎 {{ comment.dislike }}
-                              <form method="post" style="margin-top: 10px;">
-                                  {% csrf_token %}
-                                  <input type="hidden" name="parent" value="{{ comment.id }}">
-                                  <textarea name="comment" placeholder="Reply to this comment..." required></textarea>
-                                  <button type="submit">Reply</button>
-                              </form>
-                        </div>
-                        {% include "core/comment_replies.html" with replies=comment.replies.all depth=0 %}
-                    </div>
-                {% endif %}
-            {% endfor %}
+        {% for comment in comments %}
+        {% if not comment.parent %}
+        <div class="comment">
+            <p class="author">{{ comment.author }}</p>
+            <p>{{ comment.text }}</p>
+            <div class="meta">
+                <div class="likeNdis">
+                    <form method="post" action="{% url 'core:post' subreddit_name=subreddit_name post_id=post.id %}">
+                        {% csrf_token %}
+                        <input type="hidden" name="comment_id" value="{{ comment.id }}">
+                        <input type="hidden" name="likesNdis" id="vote-type-{{ comment.id }}">
+
+                        <button type="button"
+                            onclick="document.getElementById('vote-type-{{ comment.id }}').value='like'; this.form.submit()">&#9650;</button>
+                        {{ comment.like }} |
+
+                        <button type="button"
+                            onclick="document.getElementById('vote-type-{{ comment.id }}').value='dislike'; this.form.submit()">&#9660;</button>
+                        {{ comment.dislike }}
+                    </form>
+                </div>
+                <p class="reply-btn" data-id="{{ comment.id }}">reply</p>
+                {% if user.username == comment.author %}
+                <form method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name="delete_comment_id" value="{{ comment.id }}">
+                    <button type="submit" class="deleteBtn">delete</button>
+                </form>
+                {% endif%}
+
+            </div>
+            <form method="post" class="reply-form hidden" data-parent="{{ comment.id }}">
+                {% csrf_token %}
+                <input type="hidden" name="parent" value="{{ comment.id }}">
+                <textarea name="comment" placeholder="Reply to this comment..." required></textarea>
+                <button type="submit">Reply</button>
+            </form>
+
+            {% include "core/comment_replies.html" with replies=comment.replies.all depth=0 %}
+        </div>
+        {% endif %}
+        {% endfor %}
+
         {% else %}
-            <p class="no-comments">No comments yet</p>
+        <p class="no-comments">No comments yet</p>
         {% endif %}
     </div>
-
 </body>
+
+<script src="{% static 'core/script.js' %}"></script>
+
 </html>

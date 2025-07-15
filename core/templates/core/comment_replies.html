@@ -1,25 +1,31 @@
+  {% load static %}
+  {% for comment in replies %}
 
+  <div class="comment-thread">
+      <div class="comment">
+          <p class="author">{{ comment.author }}</p>
+          <p>{{ comment.text }}</p>
+          <div class="meta">
+            
+              &#9650;  {{ comment.like }} | &#9660; {{ comment.dislike }} <p class="reply-btn" data-id="{{ comment.id }}">reply</p>
+              {% if user.username == comment.author %}
+               <form method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name="delete_comment_id" value="{{comment.id}}">
+                    <button type="submit" class="deleteBtn">delete</button>
+                </form>
+              {% endif%}
+          </div>
+          <form method="post" class="reply-form hidden" data-parent="{{ comment.id }}">
+              {% csrf_token %}
+              <input type="hidden" name="parent" value="{{ comment.id }}">
+              <textarea name="comment" placeholder="Reply to this comment..." required></textarea>
+              <button type="submit">Reply</button>
+          </form>
 
-{% for comment in replies %}
-
-    <div class="comment-thread">
-        <div class="comment">
-            <p class="author">{{ comment.author }}</p>
-            <p>{{ comment.text }}</p>
-            <div class="meta">
-                👍 {{ comment.like }} | 👎 {{ comment.dislike }}
-                <div>
-                    <form method="post" style="margin-top: 10px;">
-                        {% csrf_token %}
-                        <input type="hidden" name="parent" value="{{ comment.id }}">
-                        <textarea name="comment" placeholder="Reply to this comment..." required></textarea>
-                        <button type="submit">Reply</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-        {% if comment.replies.all %}
-            {% include "core/comment_replies.html" with replies=comment.replies.all %}
-        {% endif %}
-    </div>
-{% endfor %}
+      </div>
+      {% if comment.replies.all %}
+      {% include "core/comment_replies.html" with replies=comment.replies.all %}
+      {% endif %}
+  </div>
+  {% endfor %}

@@ -1,11 +1,13 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <title>Регистрация</title>
-    <link rel="stylesheet" href="{% static 'core/style.css' %}">
+    <title>Registration</title>
+    <link rel="stylesheet" href="{% static 'core/style.css' %}?v=2">
 </head>
+
 <body>
     <div class="container">
         <h1>Registration from</h1>
@@ -29,22 +31,23 @@
             </div>
 
             {% if form.errors %}
-                <div class="error">
-                    <ul>
-                        {% for field in form %}
-                            {% for error in field.errors %}
-                                <li>{{ error }}</li>
-                            {% endfor %}
-                        {% endfor %}
-                        {% for error in form.non_field_errors %}
-                            <li>{{ error }}</li>
-                        {% endfor %}
-                    </ul>
-                </div>
+            <div class="error">
+                <ul>
+                    {% for field in form %}
+                    {% for error in field.errors %}
+                    <li>{{ error }}</li>
+                    {% endfor %}
+                    {% endfor %}
+                    {% for error in form.non_field_errors %}
+                    <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
             {% endif %}
 
             <button type="submit">Submit</button>
         </form>
     </div>
 </body>
+
 </html>

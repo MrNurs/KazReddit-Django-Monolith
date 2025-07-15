@@ -6,6 +6,12 @@ body {
     padding: 20px;
 }
 
+header {
+    #logReTag {
+        color: #0d60c3;
+    }
+}
+
 h2 {
     border-bottom: 2px solid #ccc;
     padding-bottom: 6px;
@@ -30,8 +36,9 @@ a {
     text-decoration: none;
     font-weight: bold;
 }
-.logo-red{
-    color:red!important;
+
+.logo-red {
+    color: red !important;
 }
 
 .comment {
@@ -41,6 +48,7 @@ a {
     border-radius: 6px;
     transition: background-color 0.2s ease, box-shadow 0.2s ease;
 }
+
 .comment .author {
     font-weight: bold;
     color: #333;
@@ -50,6 +58,11 @@ a {
 .comment .meta {
     font-size: 0.9em;
     color: #888;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 3px;
+
 }
 
 .comment p {
@@ -79,12 +92,6 @@ a {
 
 }
 
-.meta .likes,
-.meta .dislikes {
-    margin-right: 10px;
-    font-size: 0.9em;
-    color: #555;
-}
 form {
     max-width: 500px;
 
@@ -117,18 +124,30 @@ form textarea {
     min-height: 100px;
 }
 
-form button {
-    background-color: #1a73e8;
+
+
+.hidden {
+    display: none;
+}
+
+.formPost button {
+    background-color: hsl(213, 100%, 68%);
     color: white;
     border: none;
-    padding: 10px 18px;
+    padding: 10px 20px;
     font-size: 16px;
-    border-radius: 5px;
+    font-weight: 600;
+    border-radius: 6px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-form button:hover {
-    background-color: #0d60c3;
+.formPost button:active {
+    transform: scale(0.97);
 }
 
+.deleteBtn{
+    all: unset;
+    color: #888;
+}

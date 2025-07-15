@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 class Subreddit(models.Model):
     name = models.CharField(max_length=100)
@@ -31,3 +32,11 @@ class Comment(models.Model):
 
     def __str__(self):
         return f"{self.text} - {self.author}"
+
+class Vote(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    comment = models.ForeignKey(Comment, on_delete=models.CASCADE)
+    vote_type = models.CharField(max_length=10, choices=[('like', 'Like'), ('dislike', 'Dislike')])
+
+    class Meta:
+        unique_together = ('user', 'comment')
