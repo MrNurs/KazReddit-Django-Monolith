@@ -6,8 +6,20 @@
           <p class="author">{{ comment.author }}</p>
           <p>{{ comment.text }}</p>
           <div class="meta">
-            
-              &#9650;  {{ comment.like }} | &#9660; {{ comment.dislike }} <p class="reply-btn" data-id="{{ comment.id }}">reply</p>
+
+           <form method="post" action="{% url 'core:post' subreddit_name=subreddit_name post_id=post.id %}">
+                        {% csrf_token %}
+                        <input type="hidden" name="comment_id" value="{{ comment.id }}">
+                        <input type="hidden" name="likesNdis" id="vote-type-{{ comment.id }}">
+
+                        <button type="button"
+                            onclick="document.getElementById('vote-type-{{ comment.id }}').value='like'; this.form.submit()">&#9650;</button>
+                        {{ comment.like }} |
+
+                        <button type="button"
+                            onclick="document.getElementById('vote-type-{{ comment.id }}').value='dislike'; this.form.submit()">&#9660;</button>
+                        {{ comment.dislike }}
+                    </form> <p class="reply-btn" data-id="{{ comment.id }}">reply</p>
               {% if user.username == comment.author %}
                <form method="post">
                     {% csrf_token %}
