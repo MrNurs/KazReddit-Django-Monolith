@@ -72,10 +72,7 @@ KazReddit/
 ├── db.sqlite3              # Default DB (add to .gitignore)
 ├── manage.py
 └── README.md
-# 🧪 Installation & Usage
-bash
-Копировать
-Редактировать
+
 # Clone the repo
 git clone https://github.com/<your-username>/KazReddit-Django-Monolith-.git
 cd KazReddit-Django-Monolith-
