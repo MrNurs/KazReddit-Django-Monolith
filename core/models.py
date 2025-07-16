@@ -17,7 +17,7 @@ class Subreddit(models.Model):
 class Post(models.Model):
     subreddit = models.ForeignKey(Subreddit, on_delete=models.CASCADE)
     title = models.CharField(max_length=100)
-    text = models.TextField(default="Пусто")  # или default=""
+    text = models.TextField(default="null")
     def __str__(self):
         return self.title
     author = models.CharField(max_length=100)

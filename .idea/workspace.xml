@@ -5,18 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e80e46f8-e01d-4db0-a846-b3974773bb64" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/static/core/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/core/static/core/script.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/static/core/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/core/static/core/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/templates/core/comment_replies.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/core/comment_replies.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/templates/core/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/core/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/templates/core/post.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/core/post.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/templates/core/post_comments.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/core/post_comments.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/templates/core/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/core/register.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/templates/core/subreddits.html" beforeDir="false" afterPath="$PROJECT_DIR$/core/templates/core/subreddits.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,6 +17,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="HTML File" />
+        <option value="Python Script" />
       </list>
     </option>
   </component>
