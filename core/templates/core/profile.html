@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'core/style.css' %}?v=2">
+</head>
+<body>
+    {% if user %}
+    <a href="/kazreddit/profile">{{user.username}}</a>
+    {% endif %}
+    <a class="logo-red" href="/kazreddit/logout">logOut</a>
+</body>
+</html>

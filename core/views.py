@@ -5,7 +5,21 @@ from django.contrib.auth.forms import UserCreationForm
 from .models import Subreddit, Post, Comment, Vote
 from django.urls import reverse_lazy
 from django.db.models import F
+from django.views import generic
+from django.views.generic import TemplateView
+from django.contrib.auth import logout
 
+def logout_view(request):
+    logout(request)
+    return redirect('/kazreddit')
+
+class ProfileView(TemplateView):
+    template_name = 'core/profile.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['userName'] = self.request.user.username
+        return context
 
 class RegisterView(generic.CreateView):
     form_class = UserCreationForm
